@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+const endpoint = "https://kea-alt-del.dk/t7/api/products?limit=20";
+const data = await fetch(endpoint).then((res) => res.json());
+console.log(data);
+---
+
+<Layout>
+  <h1>Products</h1>
+  <section class="product-grid">
+    {data.map((product) => <Card data={product} />)}
+  </section>
+</Layout>
+
+<style>
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+</style>

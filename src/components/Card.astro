@@ -1,0 +1,49 @@
+---
+const { data } = Astro.props;
+---
+
+<article class="card">
+  <img
+    src={`https://kea-alt-del.dk/t7/images/webp/640/${data.id}.webp`}
+    alt={data.productdisplayname}
+  />
+  <h2>{data.productdisplayname}</h2>
+  <p>{data.price},- DKK</p>
+</article>
+
+<style>
+  .card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .card img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.75rem 1rem 0.25rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 1rem 1rem;
+  }
+</style>
